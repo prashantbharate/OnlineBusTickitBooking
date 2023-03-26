@@ -2,13 +2,16 @@ package com.example.Repository;
 
 import java.util.List;
 
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-import com.example.Model.Routes;
+import com.example.Model.Route;
+import com.example.Model.Seat;
 
-public interface RoutesRepository extends JpaRepository<Routes, Integer>{
+@Repository
+public interface RoutesRepository extends JpaRepository<Route, Integer>{
 
-	@Query("");
-	public List<Routes> findRoutes(String start,String end);
+	public Route FindBySourceAndDestination(String source,String destination);
 }

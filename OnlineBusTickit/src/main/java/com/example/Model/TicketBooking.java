@@ -1,9 +1,8 @@
 package com.example.Model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Date;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,34 +11,38 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Entity
 @Data
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
-public class Bus {
+@Entity
+public class TicketBooking {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer bid; 
+	private Integer tid; 
 	
-	@Column(unique=true)
-	private String busnumber;
-	private String source;
-	private String destination;
-	private Date departuredate ;
-	private Date arrivaldate;
-	private double fare;
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Bus bus;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<Seat> s;
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Seat seat;
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	private User user;
+	
+	private Date bookingdate;
+	
+	private Date JourneyDate;
 	
 	
+	
+	
+//	private LocalDateTime 
 	
 }
-

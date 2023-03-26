@@ -1,7 +1,8 @@
 package com.example.Model;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,23 +24,15 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
-public class Bus {
+public class Route {
+	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer bid; 
+	private Integer rid; 
 	
-	@Column(unique=true)
-	private String busnumber;
 	private String source;
 	private String destination;
-	private Date departuredate ;
-	private Date arrivaldate;
-	private double fare;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<Seat> s;
-	
-	
-	
-}
+	private double distance;
 
+}
